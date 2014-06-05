@@ -15,11 +15,11 @@ public class Exercise1 {
 		
 		Corpus corpus = CorpusParser.parse(uri);
 		
-		TrainingAndTestSplitter tts = new TrainingAndTestSplitter(corpus, 0.9);
-		Corpus training = tts.getTrainingCorpus();
-		Corpus test = tts.getTestCorpus();
+		TrainingAndTestSplitter splitter = new TrainingAndTestSplitter(corpus, 0.9);
+		Corpus training = splitter.getTrainingCorpus();
+		Corpus test = splitter.getTestCorpus();
+		
 		BigramMLEModel model = new BigramMLEModel(training);
-
 		double perplexity = Perplexity.calculate(model, test);
 		System.out.println("Perplexity: " + perplexity);
 		

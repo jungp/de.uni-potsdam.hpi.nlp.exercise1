@@ -3,8 +3,8 @@ package de.hpi.nlp.exercise1;
 import java.util.Random;
 
 public class TrainingAndTestSplitter {
-	private Corpus training;
-	private Corpus test;
+	private final Corpus training;
+	private final Corpus test;
 	
 	public TrainingAndTestSplitter(Corpus corpus, double trainingFactor) {
 		training = new Corpus();

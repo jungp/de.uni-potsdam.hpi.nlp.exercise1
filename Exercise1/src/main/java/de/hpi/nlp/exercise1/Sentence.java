@@ -3,24 +3,32 @@ package de.hpi.nlp.exercise1;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Sentence implements Iterable<String>{
-	private final ArrayList<String> tokens;
+public class Sentence implements Iterable<Token>{
+	private final ArrayList<Token> tokens;
 	private int numTokens = 0;
 	
 	public Sentence() {
-		tokens = new ArrayList<String>();
+		tokens = new ArrayList<Token>();
 	}
 	
-	public void addToken(String token) {
+	public void addToken(Token token) {
 		tokens.add(token);
 		numTokens++;
 	}
 
-	public Iterator<String> iterator() {
+	public Iterator<Token> iterator() {
 		return tokens.iterator();
 	}
 	
 	public int getNumTokens() {
 		return numTokens;
+	}
+	
+	public String toString() {
+		String string = "";
+		for(Token t : tokens) {
+			string += t.getText() + "(" + t.getTag() + ") ";
+		}
+		return string;
 	}
 }

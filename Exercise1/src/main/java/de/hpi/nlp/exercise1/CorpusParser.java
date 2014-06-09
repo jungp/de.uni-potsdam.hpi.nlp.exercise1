@@ -34,14 +34,16 @@ public class CorpusParser {
 						switch (parser.getEventType()) {
 
 						case XMLStreamConstants.START_ELEMENT:
+							String posTag = parser.getAttributeValue(null, "cat");
 							tag = parser.getLocalName();
 							if (tag.equals("Article")) {
 								a = new Article();
 							} else if (tag.equals("sentence")) {
 								s = new Sentence();
 							} else if (tag.equals("tok")) {	
-								String word = parser.getElementText();
-								s.addToken(word);
+								String word = parser.getElementText(); 
+								Token t = new Token(word, posTag);
+								s.addToken(t);
 							}
 							break;
 

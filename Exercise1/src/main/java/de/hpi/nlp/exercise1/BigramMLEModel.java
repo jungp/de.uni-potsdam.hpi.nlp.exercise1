@@ -19,9 +19,9 @@ public class BigramMLEModel {
 		
 		for(Article a : corpus) {
 			for(Sentence s : a) {
-				for(String token : s) {
-					currToken = token;
-					
+				for(Token token : s) {
+					currToken = token.getText();
+
 					if (prevToken.equals("")) {
 						// beginning of sentence
 						
@@ -50,7 +50,7 @@ public class BigramMLEModel {
 					
 					// save term frequency for later probability calculation
 					if (termFrequency.get(currToken) != null) {
-						termFrequency.put(currToken, termFrequency.get(token) + 1);
+						termFrequency.put(currToken, termFrequency.get(currToken) + 1);
 					} else {
 						termFrequency.put(currToken, 1);
 					}
@@ -99,8 +99,8 @@ public class BigramMLEModel {
 		String currToken = "";
 		
 		double sentenceProbability = 0.0;
-		for(String token : s) {
-			currToken = token;
+		for(Token token : s) {
+			currToken = token.getText();
 			
 			if (prevToken.equals("")) {
 				prevToken = BEGINNING_OF_SENTENCE;

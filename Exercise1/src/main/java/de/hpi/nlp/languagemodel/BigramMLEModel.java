@@ -1,8 +1,13 @@
 package de.hpi.nlp.languagemodel;
 
 import java.util.HashMap;
-import java.util.Map;
 
+import java.util.Map;
+/**
+ * Model using the Maximum Likelihood Estimate (bigrams).
+ * @author pjung
+ *
+ */
 public class BigramMLEModel {
 	private final String BEGINNING_OF_SENTENCE = "<s>";
 	// both bigrams and termFrequency contain BEGINNING_OF_SENTENCE

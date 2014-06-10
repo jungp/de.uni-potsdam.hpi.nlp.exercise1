@@ -20,6 +20,7 @@ public class TrainingAndTestSplitter {
 			if (random <= trainingFactor * 10) {
 				// training data
 				training.addArticle(article);
+				
 			} else {
 				// test data
 				test.addArticle(article);

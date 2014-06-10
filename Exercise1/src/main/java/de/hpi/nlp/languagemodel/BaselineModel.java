@@ -47,10 +47,10 @@ public class BaselineModel implements PartOfSpeechTagger {
 				Map<String, Integer> tagMap = tokenPOSTags.get(token);
 				
 				if (tagMap.size() > 1) {
+					// ambiguity, need to find the most likely tag
 					int max = 0;
 					String mostLikelyTag = "";
 					
-					// ambiguity, need to find the most likely tag
 					for(String tag : tagMap.keySet()) { // TODO: very inefficient
 						if(tagMap.get(tag) > max) {
 							// if two tags have the same "probability", take first in alphabetical order
@@ -60,6 +60,7 @@ public class BaselineModel implements PartOfSpeechTagger {
 					}
 					bestTag = mostLikelyTag;
 				} else {
+					// unambiguousness, assign the only possible tag
 					bestTag = tagMap.keySet().iterator().next();		
 				}
 			}

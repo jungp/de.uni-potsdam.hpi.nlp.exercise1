@@ -24,6 +24,7 @@ public class Sentence implements Iterable<Token>{
 		return numTokens;
 	}
 	
+	// mainly for test purposes
 	public String toString() {
 		String string = "";
 		for(Token t : tokens) {

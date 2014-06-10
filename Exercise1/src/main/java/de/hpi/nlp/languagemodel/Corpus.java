@@ -6,10 +6,15 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class Corpus implements Iterable<Article>{
-	private final ArrayList<Article> articles = new ArrayList<Article>();
-	private final Set<String> vocabulary = new HashSet<String>();
+	private final ArrayList<Article> articles;
+	private final Set<String> vocabulary;
 	private long numSentences = 0;
 	private long numTokens = 0;
+	
+	public Corpus() {
+		this.articles = new ArrayList<Article>();
+		this.vocabulary =  new HashSet<String>();
+	}
 	
 	public void addArticle(Article a) {
 		articles.add(a);

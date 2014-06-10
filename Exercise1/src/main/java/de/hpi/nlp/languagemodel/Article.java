@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Article implements Iterable<Sentence>{
-	private final ArrayList<Sentence> sentences = new ArrayList<Sentence>();
+	private final ArrayList<Sentence> sentences;
+	
+	public Article() {
+		this.sentences = new ArrayList<Sentence>();
+	}
 	
 	public Iterator<Sentence> iterator() {
 		return sentences.iterator();
@@ -13,4 +17,5 @@ public class Article implements Iterable<Sentence>{
 	public void addSentence(Sentence s) {
 		sentences.add(s);
 	}
+	
 }

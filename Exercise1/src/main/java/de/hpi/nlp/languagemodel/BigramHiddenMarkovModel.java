@@ -8,8 +8,8 @@ import java.util.Set;
 
 public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 	private final String BEGINNING_OF_SENTENCE = "<s>";
-	private final Map<String, Map<String, Integer>> tagBigrams; // which tag follows which and how often
-	private final Map<String, Map<String, Integer>> tagToToken; // how often appears a token for given a tag
+	private final Map<String, Map<String, Integer>> tagBigrams; // which tag follows which how often
+	private final Map<String, Map<String, Integer>> tagToToken; // how often appears a token with a certain tag
 	private final ArrayList<double[]> probabilityMatrix;
 	private final int vocabSize;
 	private final long numSentences;
@@ -69,26 +69,6 @@ public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 		}
 
 	}
-	
-//	private void printTagMap(Map<String, Map<String, Integer>> tagToToken) {
-//		for(String key : tagToToken.keySet()) {
-//			System.out.println("KEY: " + key);
-//			for(String key2 : tagToToken.get(key).keySet()) {
-//				System.out.println("-- KEY2: " + key2);
-//				System.out.println("-- value: " + tagToToken.get(key).get(key2));
-//			}
-//		}
-//	}
-//	private void printMap(Map<String, Map<String, Integer>> tagBigrams) {
-//		for(String key : tagBigrams.keySet()) {
-//			System.out.println("KEY: " + key);
-//			for(String key2 : tagBigrams.get(key).keySet()) {
-//				System.out.println("-- KEY2: " + key2);
-//				System.out.println("-- value: " + tagBigrams.get(key).get(key2));
-//			}
-//		}
-//		System.out.println("--------------------------------------------\n");
-//	}
 	
 	public String[] determineMostLikelyTags(Sentence s) {
 		String []tags = new String[s.getNumTokens()];

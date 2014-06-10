@@ -18,22 +18,23 @@ public class Exercise2 {
 
 	public static void main(String[] args) throws URISyntaxException, FileNotFoundException, XMLStreamException {
 		File uri = new File(Exercise2.class.getResource("/GENIA_treebank_v1").toURI());
-		
 		long start = System.currentTimeMillis();
 		
 		Corpus corpus = CorpusParser.parse(uri);
 		
-		TrainingAndTestSplitter splitter = new TrainingAndTestSplitter(corpus, 0.6);
+		TrainingAndTestSplitter splitter = new TrainingAndTestSplitter(corpus, 0.9);
 		Corpus training = splitter.getTrainingCorpus();
 		Corpus test = splitter.getTestCorpus();
 		
+		// baseline model
 		PartOfSpeechTagger tagger = new BaselineModel(training);
 		double taggerPrecision = PartOfSpeechTagging.determine(tagger, test);
-		System.out.println("Precision: " + taggerPrecision);
+		System.out.println("Precision (Baseline Model): " + taggerPrecision);
 		
+		// hidden markov model using bigrams
 		tagger = new BigramHiddenMarkovModel(training);
 		taggerPrecision = PartOfSpeechTagging.determine(tagger, test);
-		System.out.println("Precision: " + taggerPrecision);
+		System.out.println("Precision (Hidden Markov Model): " + taggerPrecision);
 		
 		long time = System.currentTimeMillis() - start;
 		System.out.println("Runtime: " + time + "ms\n");

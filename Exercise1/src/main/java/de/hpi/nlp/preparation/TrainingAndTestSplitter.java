@@ -1,9 +1,9 @@
-package preparation;
+package de.hpi.nlp.preparation;
 
 import java.util.Random;
 
-import languagemodel.Article;
-import languagemodel.Corpus;
+import de.hpi.nlp.languagemodel.Article;
+import de.hpi.nlp.languagemodel.Corpus;
 
 public class TrainingAndTestSplitter {
 	private final Corpus training;

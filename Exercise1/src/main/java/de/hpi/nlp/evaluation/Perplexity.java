@@ -1,9 +1,9 @@
-package evaluation;
+package de.hpi.nlp.evaluation;
 
-import languagemodel.Article;
-import languagemodel.BigramMLEModel;
-import languagemodel.Corpus;
-import languagemodel.Sentence;
+import de.hpi.nlp.languagemodel.Article;
+import de.hpi.nlp.languagemodel.BigramMLEModel;
+import de.hpi.nlp.languagemodel.Corpus;
+import de.hpi.nlp.languagemodel.Sentence;
 
 public class Perplexity {
 	

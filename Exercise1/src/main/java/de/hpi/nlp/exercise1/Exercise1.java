@@ -1,4 +1,4 @@
-package exercise1;
+package de.hpi.nlp.exercise1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,11 +6,11 @@ import java.net.URISyntaxException;
 
 import javax.xml.stream.XMLStreamException;
 
-import languagemodel.BigramMLEModel;
-import languagemodel.Corpus;
-import preparation.CorpusParser;
-import preparation.TrainingAndTestSplitter;
-import evaluation.Perplexity;
+import de.hpi.nlp.evaluation.Perplexity;
+import de.hpi.nlp.languagemodel.BigramMLEModel;
+import de.hpi.nlp.languagemodel.Corpus;
+import de.hpi.nlp.preparation.CorpusParser;
+import de.hpi.nlp.preparation.TrainingAndTestSplitter;
 
 public class Exercise1 {
 

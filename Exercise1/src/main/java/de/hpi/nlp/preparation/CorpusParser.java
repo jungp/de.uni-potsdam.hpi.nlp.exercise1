@@ -1,4 +1,4 @@
-package preparation;
+package de.hpi.nlp.preparation;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,12 +9,12 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import languagemodel.Article;
-import languagemodel.Corpus;
-import languagemodel.Sentence;
-import languagemodel.Token;
-
 import org.apache.commons.io.FilenameUtils;
+
+import de.hpi.nlp.languagemodel.Article;
+import de.hpi.nlp.languagemodel.Corpus;
+import de.hpi.nlp.languagemodel.Sentence;
+import de.hpi.nlp.languagemodel.Token;
 
 public class CorpusParser {
 

@@ -1,4 +1,4 @@
-package languagemodel;
+package de.hpi.nlp.languagemodel;
 
 import java.util.HashMap;
 import java.util.Map;

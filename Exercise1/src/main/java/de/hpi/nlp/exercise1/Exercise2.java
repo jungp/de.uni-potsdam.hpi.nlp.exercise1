@@ -1,4 +1,4 @@
-package exercise1;
+package de.hpi.nlp.exercise1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,13 +6,13 @@ import java.net.URISyntaxException;
 
 import javax.xml.stream.XMLStreamException;
 
-import languagemodel.BaselineModel;
-import languagemodel.BigramHiddenMarkovModel;
-import languagemodel.Corpus;
-import languagemodel.PartOfSpeechTagger;
-import preparation.CorpusParser;
-import preparation.TrainingAndTestSplitter;
-import evaluation.PartOfSpeechTagging;
+import de.hpi.nlp.evaluation.PartOfSpeechTagging;
+import de.hpi.nlp.languagemodel.BaselineModel;
+import de.hpi.nlp.languagemodel.BigramHiddenMarkovModel;
+import de.hpi.nlp.languagemodel.Corpus;
+import de.hpi.nlp.languagemodel.PartOfSpeechTagger;
+import de.hpi.nlp.preparation.CorpusParser;
+import de.hpi.nlp.preparation.TrainingAndTestSplitter;
 
 public class Exercise2 {
 

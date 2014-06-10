@@ -1,12 +1,12 @@
-package evaluation;
+package de.hpi.nlp.evaluation;
 
 import java.util.Iterator;
 
-import languagemodel.Article;
-import languagemodel.Corpus;
-import languagemodel.PartOfSpeechTagger;
-import languagemodel.Sentence;
-import languagemodel.Token;
+import de.hpi.nlp.languagemodel.Article;
+import de.hpi.nlp.languagemodel.Corpus;
+import de.hpi.nlp.languagemodel.PartOfSpeechTagger;
+import de.hpi.nlp.languagemodel.Sentence;
+import de.hpi.nlp.languagemodel.Token;
 
 public class PartOfSpeechTagging {
 	

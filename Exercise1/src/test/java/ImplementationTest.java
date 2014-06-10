@@ -1,9 +1,9 @@
-import languagemodel.Article;
-import languagemodel.Corpus;
-import languagemodel.Sentence;
-import languagemodel.Token;
-
 import org.junit.Test;
+
+import de.hpi.nlp.languagemodel.Article;
+import de.hpi.nlp.languagemodel.Corpus;
+import de.hpi.nlp.languagemodel.Sentence;
+import de.hpi.nlp.languagemodel.Token;
 
 
 public class ImplementationTest {

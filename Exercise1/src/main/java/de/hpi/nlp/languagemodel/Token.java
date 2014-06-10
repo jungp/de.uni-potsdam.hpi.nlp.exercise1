@@ -1,4 +1,4 @@
-package languagemodel;
+package de.hpi.nlp.languagemodel;
 
 public class Token {
 	private String text;

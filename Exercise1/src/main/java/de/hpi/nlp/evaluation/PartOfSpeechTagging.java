@@ -26,8 +26,7 @@ public class PartOfSpeechTagging {
 					String tags[] = tagger.determineMostLikelyTags(s);
 					
 					Iterator<Token> it = s.iterator();
-					for(String estimatedTag: tags) {
-						
+					for(String estimatedTag: tags) {			
 						Token sentenceToken = it.next();
 						if(sentenceToken.getTag().equals(estimatedTag)) {
 							correct++;

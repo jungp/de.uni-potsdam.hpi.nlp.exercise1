@@ -99,7 +99,7 @@ public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 		for(int i = 0; i < sentenceLength; i++) {
 			Token token = it.next();
 			String currText = token.getText();
-			this.probabilityMatrix.add(new double[tagSet.size()]); // one entry(vector) for each sentence
+			this.probabilityMatrix.add(new double[tagSet.size()]); // one entry(vector) for each token in the sentence
 			
 			if (i == 0) {
 				// beginning of the sentence	
@@ -138,50 +138,15 @@ public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 			probabilityMatrix.get(0)[tagPos] = Math.log(priorProbability * transitionProbability * probabilityTokenWithThisTag);
 		}
 		
-		// determine first tag by finding the maximum probability
-		double max = Double.NEGATIVE_INFINITY;
-		int bestTagPosition = 0;
-
-		for(int i = 0; i < probabilityMatrix.get(0).length; i++) {
-			double value = probabilityMatrix.get(0)[i];
-			if(value > max) {
-				max = value;
-				bestTagPosition = i;
-			}
-		}
-
-		String bestTag = positionToTag.get(bestTagPosition);
-		return bestTag;
+		// find the tag with the highest probability for the first word
+		return findLikeliestTag(0);
 	}
 	
 	private String determineMostLikelyTagWithPriorProbability(Set<String> tagSet, String currText, int index, int numTokens) {
-		double priorProbability = 0.0;
-		double transitionProbability = 0.0;
 		double probabilityTokenWithThisTag = 0.0;
-		int prevIndex = index - 1;
 		
 		for(String tag : tagSet) {
-			double maxProbability = Double.NEGATIVE_INFINITY;
-			
-			for(int i = 0; i < probabilityMatrix.get(prevIndex).length; i++) {
-				priorProbability = probabilityMatrix.get(prevIndex)[i];
-				String prevTag = positionToTag.get(i);
-				
-				int transitionOccurrences = 0;
-				int denominator = 0;
-				if(tagBigrams.get(prevTag).containsKey(tag)) {
-					transitionOccurrences = tagBigrams.get(prevTag).get(tag);
-					denominator = tagBigrams.get(prevTag).size();
-				}
-				
-				transitionProbability = (double)(transitionOccurrences + 1.0) / (denominator + vocabSize);
-				double probability = priorProbability * Math.log(transitionProbability);
-				
-				if (probability > maxProbability) {
-					maxProbability = probability;
-				}
-				
-			}
+			double maxPathProbability = findMaxPathProbability(index - 1, tag); 
 			
 			int tokenWithThisTagCount = 0;
 			if (tagToToken.get(tag).containsKey(currText)) {
@@ -189,12 +154,44 @@ public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 			}
 			
 			probabilityTokenWithThisTag = (double)(tokenWithThisTagCount + 1.0) / (numTokens + vocabSize);
-			double overallProbability = maxProbability * Math.log(probabilityTokenWithThisTag);
+			double overallTagProbability = maxPathProbability * Math.log(probabilityTokenWithThisTag);
 			// save probability for this position
 			int tagPosition = tagToPosition.get(tag);
-			probabilityMatrix.get(index)[tagPosition] = overallProbability;
+			probabilityMatrix.get(index)[tagPosition] = overallTagProbability;
 		}
+		
+		return findLikeliestTag(index);
+	}
+	
+	private double findMaxPathProbability(int prevIndex, String tag) {
+		double maxPathProbability = Double.NEGATIVE_INFINITY;
+		double priorProbability = 0.0;
+		double transitionProbability = 0.0;
+		
+		// iterator over all previous path probabilities and multiply by transition probability 
+		for(int i = 0; i < probabilityMatrix.get(prevIndex).length; i++) {
+			priorProbability = probabilityMatrix.get(prevIndex)[i];
+			String prevTag = positionToTag.get(i);
 			
+			int transitionOccurrences = 0;
+			int prevTagOccurrences = 0;
+			if(tagBigrams.get(prevTag).containsKey(tag)) {
+				transitionOccurrences = tagBigrams.get(prevTag).get(tag);
+				prevTagOccurrences = tagBigrams.get(prevTag).size();
+			}
+			
+			transitionProbability = (double)(transitionOccurrences + 1.0) / (prevTagOccurrences + vocabSize);
+			double pathProbability = priorProbability * Math.log(transitionProbability);
+			
+			// remember the probability of the likeliest path to this tag
+			if (pathProbability > maxPathProbability) {
+				maxPathProbability = pathProbability;
+			}
+		}
+		return maxPathProbability;
+	}
+	
+	private String findLikeliestTag(int index) {
 		double max = Double.NEGATIVE_INFINITY;
 		int bestTagPosition = 0;
 		for(int i = 0; i < probabilityMatrix.get(index).length; i++) {
@@ -204,7 +201,6 @@ public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 				bestTagPosition = i;
 			}
 		}
-		
 		String bestTag = positionToTag.get(bestTagPosition);
 		return bestTag;
 	}

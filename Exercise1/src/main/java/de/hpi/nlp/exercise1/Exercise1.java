@@ -12,11 +12,15 @@ import de.hpi.nlp.languagemodel.Corpus;
 import de.hpi.nlp.preparation.CorpusParser;
 import de.hpi.nlp.preparation.TrainingAndTestSplitter;
 
+/**
+ * NLP: Exercise 1 - Language Modeling and Part-of-speech tagging
+ * @author pjung
+ *
+ */
 public class Exercise1 {
 
 	public static void main(String[] args) throws FileNotFoundException, XMLStreamException, URISyntaxException {
 		File uri = new File(Exercise1.class.getResource("/GENIA_treebank_v1").toURI());
-		
 		long start = System.currentTimeMillis();
 		
 		Corpus corpus = CorpusParser.parse(uri);

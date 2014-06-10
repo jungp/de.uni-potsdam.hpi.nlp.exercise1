@@ -12,35 +12,18 @@ import de.hpi.nlp.languagemodel.Corpus;
 import de.hpi.nlp.languagemodel.Sentence;
 import de.hpi.nlp.languagemodel.Token;
 
-
-public class PartOfSpeechTagTest {
-	
-	@Test
-	public void test() {
-		Sentence s = new Sentence();
-		Token t1 = new Token("This", "tag1");
-		Token t2 = new Token("is", "tag2");
-		Token t3 = new Token("good", "tag3");
-		Token t4 = new Token("news", "tag4");
-		Token t5 = new Token(".", "tag5");
-		s.addToken(t1);
-		s.addToken(t2);
-		s.addToken(t3);
-		s.addToken(t4);
-		s.addToken(t5);
-		
-		for(Token token : s) {
-			System.out.println(token.getText() + ", " + token.getTag());
-		}
-	}
+/**
+ * Test to play around with tags and see if tagger reacts as expected.
+ * @author pjung
+ *
+ */
+public class BaselineModelTest {
 	
 	@Test
 	public void taggingTest() throws FileNotFoundException, XMLStreamException, URISyntaxException {
-//		File uri = new File(Exercise2.class.getResource("/GENIA_treebank_v1").toURI());
-//		Corpus corpus = CorpusParser.parse(uri);
-//		
-//		TrainingAndTestSplitter splitter = new TrainingAndTestSplitter(corpus, 0.9);
-//		Corpus training = splitter.getTrainingCorpus();
+		
+		// training corpus
+		Corpus training = new Corpus();
 		
 		Sentence st = new Sentence();
 		Token tt1 = new Token("This", "DT2");
@@ -55,13 +38,12 @@ public class PartOfSpeechTagTest {
 		st.addToken(tt4);
 		st.addToken(tt5);
 		st.addToken(tt6);
+		
 		Article art = new Article();
 		art.addSentence(st);
-		
-		Corpus training = new Corpus();
 		training.addArticle(art);
 		
-		
+		// test corpus
 		Corpus test = new Corpus();
 		
 		Sentence s = new Sentence();
@@ -80,6 +62,7 @@ public class PartOfSpeechTagTest {
 		a.addSentence(s);
 		test.addArticle(a);
 		
+		// learn model and determine tags
 		BaselineModel model = new BaselineModel(training);
 		double taggerPrecision = PartOfSpeechTagging.determine(model, test);
 		System.out.println("Precision: " + taggerPrecision);	

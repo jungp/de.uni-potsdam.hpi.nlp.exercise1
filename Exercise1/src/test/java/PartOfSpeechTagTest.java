@@ -3,14 +3,15 @@ import java.net.URISyntaxException;
 
 import javax.xml.stream.XMLStreamException;
 
+import languagemodel.Article;
+import languagemodel.BaselineModel;
+import languagemodel.Corpus;
+import languagemodel.Sentence;
+import languagemodel.Token;
+
 import org.junit.Test;
 
-import de.hpi.nlp.exercise1.Article;
-import de.hpi.nlp.exercise1.BaselineModel;
-import de.hpi.nlp.exercise1.Corpus;
-import de.hpi.nlp.exercise1.PartOfSpeechTagging;
-import de.hpi.nlp.exercise1.Sentence;
-import de.hpi.nlp.exercise1.Token;
+import evaluation.PartOfSpeechTagging;
 
 
 public class PartOfSpeechTagTest {

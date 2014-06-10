@@ -1,4 +1,4 @@
-package de.hpi.nlp.exercise1;
+package languagemodel;
 
 public class Token {
 	private String text;

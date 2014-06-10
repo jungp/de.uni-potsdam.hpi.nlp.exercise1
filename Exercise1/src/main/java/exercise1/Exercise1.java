@@ -1,10 +1,16 @@
-package de.hpi.nlp.exercise1;
+package exercise1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 
 import javax.xml.stream.XMLStreamException;
+
+import languagemodel.BigramMLEModel;
+import languagemodel.Corpus;
+import preparation.CorpusParser;
+import preparation.TrainingAndTestSplitter;
+import evaluation.Perplexity;
 
 public class Exercise1 {
 

@@ -1,12 +1,13 @@
+import languagemodel.Article;
+import languagemodel.BigramHiddenMarkovModel;
+import languagemodel.Corpus;
+import languagemodel.Sentence;
+import languagemodel.Token;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import de.hpi.nlp.exercise1.Article;
-import de.hpi.nlp.exercise1.BigramHiddenMarkovModel;
-import de.hpi.nlp.exercise1.Corpus;
-import de.hpi.nlp.exercise1.PartOfSpeechTaggingMarkov;
-import de.hpi.nlp.exercise1.Sentence;
-import de.hpi.nlp.exercise1.Token;
+import evaluation.PartOfSpeechTagging;
 
 
 public class AnotherImplTest {
@@ -77,7 +78,7 @@ public class AnotherImplTest {
 	@Test
 	public void test() {
 		BigramHiddenMarkovModel model = new BigramHiddenMarkovModel(trainingCorpus);
-		double taggerPrecision = PartOfSpeechTaggingMarkov.determine(model, testCorpus);
+		double taggerPrecision = PartOfSpeechTagging.determine(model, testCorpus);
 		System.out.println("Precision: " + taggerPrecision);
 	}
 }

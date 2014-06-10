@@ -1,4 +1,4 @@
-package de.hpi.nlp.exercise1;
+package languagemodel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class BigramHiddenMarkovModel {
+public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 	private final String BEGINNING_OF_SENTENCE = "<s>";
 	private final Map<String, Map<String, Integer>> tagBigrams; // which tag follows which and how often
 	private final Map<String, Map<String, Integer>> tagToToken; // how often appears a token for given a tag

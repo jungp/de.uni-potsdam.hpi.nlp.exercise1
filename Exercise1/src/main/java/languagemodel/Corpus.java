@@ -1,4 +1,4 @@
-package de.hpi.nlp.exercise1;
+package languagemodel;
 
 import java.util.ArrayList;
 import java.util.HashSet;

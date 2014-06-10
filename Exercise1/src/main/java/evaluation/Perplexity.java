@@ -1,4 +1,9 @@
-package de.hpi.nlp.exercise1;
+package evaluation;
+
+import languagemodel.Article;
+import languagemodel.BigramMLEModel;
+import languagemodel.Corpus;
+import languagemodel.Sentence;
 
 public class Perplexity {
 	

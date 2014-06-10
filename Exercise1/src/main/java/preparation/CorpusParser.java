@@ -1,4 +1,4 @@
-package de.hpi.nlp.exercise1;
+package preparation;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,6 +8,11 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+
+import languagemodel.Article;
+import languagemodel.Corpus;
+import languagemodel.Sentence;
+import languagemodel.Token;
 
 import org.apache.commons.io.FilenameUtils;
 

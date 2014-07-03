@@ -146,7 +146,7 @@ public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 		double probabilityTokenWithThisTag = 0.0;
 		
 		for(String tag : tagSet) {
-			double maxPathProbability = findMaxPathProbability(index - 1, tag); 
+			double maxPathProbability = findMaxPathProbability(index, tag); 
 			
 			int tokenWithThisTagCount = 0;
 			if (tagToToken.get(tag).containsKey(currText)) {
@@ -163,12 +163,13 @@ public class BigramHiddenMarkovModel implements PartOfSpeechTagger{
 		return findLikeliestTag(index);
 	}
 	
-	private double findMaxPathProbability(int prevIndex, String tag) {
+	private double findMaxPathProbability(int index, String tag) {
 		double maxPathProbability = Double.NEGATIVE_INFINITY;
 		double priorProbability = 0.0;
 		double transitionProbability = 0.0;
+		int prevIndex = index - 1;
 		
-		// iterator over all previous path probabilities and multiply by transition probability 
+		// iterate over all previous path probabilities and multiply by transition probability 
 		for(int i = 0; i < probabilityMatrix.get(prevIndex).length; i++) {
 			priorProbability = probabilityMatrix.get(prevIndex)[i];
 			String prevTag = positionToTag.get(i);
